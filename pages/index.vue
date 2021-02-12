@@ -1,18 +1,16 @@
 <template>
-  <section class="hero">
-    
+  <section class="ingredient-search">
+    <IngredientSearch/>
   </section>
 </template>
 
 <script>
-import Card from '~/components/Card'
+import IngredientSearch from "../components/IngredientSearch";
 
 export default {
   name: 'HomePage',
   layout: 'landing',
-  components: {
-    Card
-  }
+  components: { IngredientSearch }
 }
 </script>
 

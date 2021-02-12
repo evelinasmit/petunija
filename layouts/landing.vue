@@ -26,6 +26,7 @@ export default {
     Footer,
     LandingHero,
   },
+  transition: 'page'
 }
 </script>
 

@@ -2,8 +2,8 @@
   <section>
     <b-taglist>
       <b-tag
-        v-for="(selection, index) in selected"
-        :key="index"
+        v-for="selection in selected"
+        :key="selection"
         type="is-primary"
         closable
         @close="onRemoveSelection(selection)"
@@ -54,12 +54,19 @@ export default {
         .replace(/[\u0300-\u036f]/g, '')
     },
     onAddSelection(selection) {
-      if (selection != null && selection.length > 0)
+      if (selection != null && selection.length > 0) {
         this.selected.add(selection)
+        this.ingredientChange();
+      }
     },
     onRemoveSelection(selection) {
       this.selected.delete(selection)
+      this.ingredientChange();
+      this.$forceUpdate(); // register change when working with sets
     },
+    ingredientChange() {
+      this.$emit('ingredient-change', Array.from(this.selected));
+    }
   },
 }
 </script>
